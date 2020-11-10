@@ -92,14 +92,12 @@
                 class="dropdown-menu border-0"
                 aria-labelledby="user-options"
               >
-                {% if request.user.is_authenticated %} {% if
-                request.user.is_superuser %}
+                {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
                 <a href="" class="dropdown-item">Product Management</a>
                 {% endif %}
                 <a href="" class="dropdown-item">My Profile</a>
                 <a href="{% url 'account_logout' %}" class="dropdown-item"
-                  >Logout</a
-                >
+                  >Logout</a>
                 {% else %}
                 <a href="{% url 'account_signup' %}" class="dropdown-item"
                   >Register</a
@@ -131,7 +129,6 @@
 
     {% if messages %}
     <div class="message-container"></div>
-    {% endif %} {% block page_header %} {% endblock %} {% block content %} {%
-    endblock %} {% block postloadjs %} {% endblock %}
+    {% endif %} {% block page_header %} {% endblock %} {% block content %} {% endblock %} {% block postloadjs %} {% endblock %}
   </body>
 </html>
