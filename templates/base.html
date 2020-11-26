@@ -10,24 +10,23 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    {% endblock %} 
-    {% block extra_meta %} 
-    {% endblock %} 
-    
-    {% block corecss %}
+    {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% endblock %} 
-    {% block extra_css %} 
-    {% endblock %} 
-    {% block corejs %}
-    <script src="https://kit.fontawesome.com/954a0d8268.js" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    {% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
+    <script
+      src="https://kit.fontawesome.com/954a0d8268.js"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -43,9 +42,7 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    {% endblock %} 
-    {% block extra_js %}
-     {% endblock %}
+    {% endblock %} {% block extra_js %} {% endblock %}
 
     <title>Boutique Ado {% block extra_title %}{% endblock %}</title>
   </head>
@@ -104,15 +101,20 @@
                 class="dropdown-menu border-0"
                 aria-labelledby="user-options"
               >
-                {% if request.user.is_authenticated %} 
-                    {% if request.user.is_superuser %}
-                        <a href="" class="dropdown-item">Product Management</a>
-                    {% endif %}
-                        <a href="" class="dropdown-item">My Profile</a>
-                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
+                <a href="" class="dropdown-item">Product Management</a>
+                {% endif %}
+                <a href="" class="dropdown-item">My Profile</a>
+                <a href="{% url 'account_logout' %}" class="dropdown-item"
+                  >Logout</a
+                >
                 {% else %}
-                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                <a href="{% url 'account_signup' %}" class="dropdown-item"
+                  >Register</a
+                >
+                <a href="{% url 'account_login' %}" class="dropdown-item"
+                  >Login</a
+                >
                 {% endif %}
               </div>
             </li>
@@ -132,6 +134,28 @@
           </ul>
         </div>
       </div>
+      <div class="row bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light w-100">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#main-nav"
+            aria-controls="main-nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          {% include 'includes/mobile-top-header.html' %}
+          {% include 'includes/main-nav.html' %}
+        </nav>
+      </div>
+       <div id="delivery-banner" class="row text-center">
+            <div class="col bg-black text-white">
+                <h4 class="logo-font my-1">Free delivery on orders over ${{ free_shipping_threshold }}!</h4>                
+            </div>            
+        </div>
     </header>
 
     {% if messages %}
